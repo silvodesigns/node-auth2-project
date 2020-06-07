@@ -3,14 +3,19 @@
 module.exports = {
 
   development: {
-    // our DBMS driver
-    client: 'sqlite3',
-    // the location of our db
-    connection: {
-      filename: './database/users.db3',
+      // our DBMS driver
+      client: 'sqlite3',
+      // necessary when using sqlite3
+      useNullAsDefault: true,
+      // the location of our db
+      connection: {
+        filename: './database/users.db3',
+
+      },
+      
+    migrations: {
+      directory: './database/migrations'
     },
-    // necessary when using sqlite3
-    useNullAsDefault: true
   }
 
 };
