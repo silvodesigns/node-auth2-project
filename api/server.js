@@ -1,7 +1,9 @@
 const express = require('express');
 const server = express();
 
-server.get('/', (req, res )=> {
+server.use(express.json());
+
+server.get('/api', (req, res )=> {
     res.send('Hello from Express');
 });
 
