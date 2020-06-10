@@ -1,10 +1,15 @@
-const express = require('express');
+  
+const router = require('express').Router();
 
-const router = express.Router();
+const Users = require('./users_model.js');
+const restricted = require('../auth/restricted-middleware.js');
 
-router.get('/', (req, res) => {
-    res.status(200).send('Hello from the users endpoint');
+router.get('/', restricted, (req, res) => {
+  Users.find()
+    .then(users => {
+      res.json(users);
+    })
+    .catch(err => res.send(err));
 });
-
 
 module.exports = router;
